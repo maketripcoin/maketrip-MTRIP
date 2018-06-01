@@ -55,7 +55,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("0x00000f71d1f26444707cedcef0e02d4aee7e1c9ba45f33c9c7bff89673a504ef"));
+    (0, uint256("0x0000031e3df74d17403d7600b42734d63bd1a51c0156c138c7a58163993be945"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -111,13 +111,13 @@ public:
         nTargetSpacing = 2 * 60;  // Maketrip: 2 minutes
         nMaturity = 10;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 100000000 * COIN;
+        nMaxMoneyOut = 30000000 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 200;
         nModifierUpdateBlock = 1; // we use the version 2 for MTRIP
 
-        const char* pszTimestamp = "Sniper Ready Give Me a Target - Lesley";
+        const char* pszTimestamp = "Happiness can exist only in acceptance - June 2018";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -129,17 +129,18 @@ public:
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
         genesis.nTime = 1524904775;
-        genesis.nBits = 504365040;
-        genesis.nNonce = 21834689;
+        genesis.nBits = 0x1e0ffff0;
+        genesis.nNonce = 24082679;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000f71d1f26444707cedcef0e02d4aee7e1c9ba45f33c9c7bff89673a504ef"));
-        assert(genesis.hashMerkleRoot == uint256("0xc793297e7fb6591d5eb9fc2e5518222e57b2d205cf0234d9adc2337d8fc8e6f3"));
+        assert(hashGenesisBlock == uint256("0x0000031e3df74d17403d7600b42734d63bd1a51c0156c138c7a58163993be945"));
+        assert(genesis.hashMerkleRoot == uint256("0x93870b74ac74be6862d29884ea9c0da7041c373f5debcf4e6fda498696a6ea15"));
 
         // DNS Seeding
         vSeeds.push_back(CDNSSeedData("seed1", "45.77.241.199"));
         vSeeds.push_back(CDNSSeedData("seed2", "149.28.174.100"));
 	vSeeds.push_back(CDNSSeedData("seed3", "149.28.26.118"));
+        vSeeds.push_back(CDNSSeedData("seed4", "207.148.88.26"));
 
         // Maketrip addresses start with 'M'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 50);
@@ -207,14 +208,14 @@ public:
         nMaturity = 15;
         nMasternodeCountDrift = 4;
         nModifierUpdateBlock = 1;
-        nMaxMoneyOut = 100000000 * COIN;
+        nMaxMoneyOut = 30000000 * COIN;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1524904775;
-        genesis.nNonce = 21834689;
+        genesis.nNonce = 24082679;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000f71d1f26444707cedcef0e02d4aee7e1c9ba45f33c9c7bff89673a504ef"));
+        // assert(hashGenesisBlock == uint256("0x00000f71d1f26444707cedcef0e02d4aee7e1c9ba45f33c9c7bff89673a504ef"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -280,7 +281,7 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1524904775;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 21451168;
+        genesis.nNonce = 24082679;
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 21515;
