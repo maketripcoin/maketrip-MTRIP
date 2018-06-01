@@ -1,0 +1,26 @@
+[Unit]
+Description=Maketrip's distributed currency daemon
+After=network.target
+
+[Service]
+User=maketrip
+Group=maketrip
+
+Type=forking
+PIDFile=/var/lib/maketripd/maketripd.pid
+
+ExecStart=/usr/bin/maketripd -daemon -pid=/var/lib/maketripd/maketripd.pid \
+          -conf=/etc/maketrip/maketrip.conf -datadir=/var/lib/maketripd
+
+ExecStop=-/usr/bin/maketrip-cli -conf=/etc/maketrip/maketrip.conf \
+         -datadir=/var/lib/maketripd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

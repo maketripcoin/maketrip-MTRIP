@@ -1,0 +1,2 @@
+usr/local/bin/maketripd usr/bin
+usr/local/bin/maketrip-cli usr/bin
